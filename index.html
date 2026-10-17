@@ -358,7 +358,7 @@ function generatePrint(){
       content+='<h2 class="doc-toc-heading depth-1 doc-unassigned">목차 미지정</h2>';
     }
     priorAncestors=ancestors;
-    content+=`<section class="doc-item">${n.title?`<h3 class="doc-entry-title">${esc(n.title)}</h3>`:`<div class="doc-label doc-entry-label">기록 ${String(i+1).padStart(2,'0')}</div>`}<div class="doc-meta">${esc(n.type)}${n.location?' · 원문 '+esc(n.location):''}${showDate?' · 작성 '+esc(dateStr(n.createdAt))+(n.updatedAt!==n.createdAt?' · 수정 '+esc(dateStr(n.updatedAt)):''):''}</div><div class="doc-label">핵심 내용</div><p>${printAnnotatedBody(n)}</p>${printAnnotations(n,detail)}${showTags&&n.tags.length?`<div class="doc-key">${n.tags.map(t=>'#'+esc(t)).join('　')}</div>`:''}<div class="doc-rule"></div></section>`;
+    content+=`<section class="doc-item">${n.title?`<h3 class="doc-entry-title">${esc(n.title)}</h3>`:''}<div class="doc-meta">${esc(n.type)}${n.location?' · 원문 '+esc(n.location):''}${showDate?' · 작성 '+esc(dateStr(n.createdAt))+(n.updatedAt!==n.createdAt?' · 수정 '+esc(dateStr(n.updatedAt)):''):''}</div><div class="doc-label">핵심 내용</div><p>${printAnnotatedBody(n)}</p>${printAnnotations(n,detail)}${showTags&&n.tags.length?`<div class="doc-key">${n.tags.map(t=>'#'+esc(t)).join('　')}</div>`:''}<div class="doc-rule"></div></section>`;
   });
   return content;
 }
